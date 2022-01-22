@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('content')
-<h2>Edit Data Buku</h2>
+<h2 style="text-align: center">Edit Data Buku</h2>
 @if(session('sukses'))
     <div class="alert alert-success" role="alert">
         {{ session('sukses') }}
     </div>
 @endif
 
-<div class="row">
+<div class="container-sm">
     <form action="/buku/{{ $buku->id }}/update" method="POST">
         {{ csrf_field() }}
         <div class="mb-3">
@@ -22,6 +22,6 @@
             <input name="pengarang" type="text" class="form-control" id="pengarang" aria-describedby="emailHelp"
                 placeholder="Nama Pengarang" value="{{ $buku->pengarang }}">
         </div>
-        <button type="submit" class="btn btn-warning ">Update Data</button>
+        <button type="submit" class="btn btn-warning">Update Data</button>
     </form>
     @endsection

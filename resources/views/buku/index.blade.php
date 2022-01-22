@@ -7,42 +7,37 @@
     </div>
 @endif
 
-<div class="row">
-    <div class="col-6">
-        <h2>Data Buku</h2>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Tambah Data
-        </button>
-    </div>
-    <div class="col-6">
-
-
-    </div>
-</div>
-
-<table class="table table-hover">
-    <tbody>
-        <tr>
-            <th>Judul</th>
-            <th>Pengarang</th>
-            <th>Tanggal Dibuat</th>
-            <th>Action</th>
-        </tr>
-        @foreach( $data_buku as $buku )
-            <tr>
-                <td>{{ $buku->judul }}</td>
-                <td>{{ $buku->pengarang }}</td>
-                <td>{{ $buku->created_at }}</td>
-                <td>
-                    <a href="/buku/{{ $buku->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
-                    <a href="/buku/{{ $buku->id }}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Apakah yakin ingin menghapus data ?')">Hapus</a>
-                </td>
+<div class="container-sm">
+    <h2 style="text-align: center">Data Buku</h2>
+    <table class="table table-hover table-bordered">
+        <tbody>
+            <tr style="background-color: blueviolet;">
+                <th>Judul</th>
+                <th>Pengarang</th>
+                <th>Tanggal Dibuat</th>
+                <th>Tanggal Diubah</th>
+                <th>Action</th>
             </tr>
-        @endforeach
-
-    </tbody>
-</table>
+            @foreach( $data_buku as $buku )
+                <tr>
+                    <td>{{ $buku->judul }}</td>
+                    <td>{{ $buku->pengarang }}</td>
+                    <td>{{ $buku->created_at }}</td>
+                    <td>{{ $buku->updated_at }}</td>
+                    <td style="text-align: center">
+                        <a href="/buku/{{ $buku->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/buku/{{ $buku->id }}/delete" class="btn btn-danger btn-sm"
+                            onclick="return confirm('Apakah yakin ingin menghapus data ?')">Hapus</a>
+                    </td>
+                </tr>
+            @endforeach
+    
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Tambah Data
+    </button>
+    </div>
 </div>
 
 <!-- Modal -->
@@ -67,11 +62,11 @@
                         <input name="pengarang" type="text" class="form-control" id="pengarang"
                             aria-describedby="emailHelp" placeholder="Nama Pengarang">
                     </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
