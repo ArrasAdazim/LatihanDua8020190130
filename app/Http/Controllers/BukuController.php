@@ -8,7 +8,7 @@ class BukuController extends Controller
 {
     public function index()
     {
-        $data_buku= \App\Buku::all();
+        $data_buku= \App\Buku::latest()->paginate(10);
         return view('buku.index',['data_buku'=>$data_buku]);;
     }
 
